@@ -1,0 +1,102 @@
+/* General body styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    /* White Background */
+}
+
+/* Outer background */
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+}
+
+/* Inner container styling */
+.container {
+    width: 400px;
+    background-color: #f8f9fa;
+    /* Light gray container */
+    border-radius: 8px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Logo styling */
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333333;
+}
+
+/* Title */
+.title {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #555555;
+}
+
+/* Form styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #333333;
+    font-size: 0.9rem;
+}
+
+.email-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.continue-btn {
+    width: 100%;
+    background-color: #00e5d8;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.continue-btn:hover {
+    background-color: #00bfa5;
+}
+
+/* Terms text */
+.terms {
+    font-size: 0.8rem;
+    color: #777777;
+}
+
+/* Links */
+.links {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #555555;
+}
+
+.link {
+    color: #00bfa5;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
