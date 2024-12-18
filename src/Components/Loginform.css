@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Flow+Circular&family=Jost:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+    --white:#FFFFFF;
+    --black:#000000;
+    --lightgrey:#D1D9E0;
+    --blue:#4883DB;
+}
+/* Container and Background */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right, #FFFFFF, #F3FCF1);
+    font-family: 'Roboto';
+  }
+  .login-box {
+    width: 100%;
+    max-width: 520px;
+    margin: 20px auto 0 auto;
+    padding: 45px 58px 115px 45px;
+    background: var(--white);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  .login-box-content{
+    width:100%;
+    max-width: 415px;
+    margin: 0 auto;
+  }
+  /* Header */
+  .logo{
+    margin: 0;
+  }
+  .subtitle {
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--black);
+    margin: 0;
+  }
+  .login-options{
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    justify-content: center;
+  }
+  /* Buttons */
+  .login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 353px;
+    background-color: var(--white);
+    color: var(--blue);
+    padding: 17px 20px;
+    font-size: 24px;
+    border-radius: 25px;
+    border: 1px solid var(--lightgrey);
+  }
+  .github-btn{
+    margin: 30px 0 0 0;
+  }
+  /* Links and Policies */
+  .policy-text {
+    font-size: 12px;
+    color: var(--black);
+    margin: 0;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--lightgrey);
+}
+    .signup-text{
+        margin: 30px 0 0 0;
+    }
+  a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
