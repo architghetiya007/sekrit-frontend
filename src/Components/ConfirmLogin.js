@@ -5,9 +5,9 @@ import Logo from "./../Images/logo.png";
 const ConfirmLogin = () => {
   return (
     <div className="background">
+       <img src={Logo} className="logo" />
+       <h2 className="subtitle">Sign in to Sekrit</h2>
       <div className="container">
-        <img src={Logo} className="logo" />
-        <h2 className="title">Sign in to Sekrit</h2>
         <div className="form-group">
           <label htmlFor="email">Email Address*</label>
           <input
@@ -22,7 +22,6 @@ const ConfirmLogin = () => {
             Use.
           </p>
         </div>
-        <hr />
         <div className="links">
           <a href="#login" className="link">
             Login a different way
@@ -31,7 +30,7 @@ const ConfirmLogin = () => {
           <a href="#signup" className="link">
             Sign up for a free trial
           </a>{" "}
-          or{" "}
+          <span> or </span>
           <a href="#contact" className="link">
             Contact Us
           </a>

@@ -1,39 +1,44 @@
-/* General body styling */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    /* White Background */
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root{
+    --white:#FFFFFF;
+    --black:#000000;
+    --lightgrey:#D1D9E0;
+    --darkgray:#59636E;
+    --blue:#4883DB;
+}
 /* Outer background */
 .background {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #ffffff;
+    background: linear-gradient(to bottom right, #FFFFFF, #F3FCF1);
 }
 
 /* Inner container styling */
 .container {
-    width: 400px;
-    background-color: #f8f9fa;
-    /* Light gray container */
+    width: 100%;
+    max-width: 585px !important;
+    margin: 20px auto 0 auto;
+    background-color: var(--white);
     border-radius: 8px;
-    padding: 30px 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 55px 0px 90px 0px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 /* Logo styling */
-.logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #333333;
+.logo{
+    margin: 0;
 }
-
+.subtitle {
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--black);
+    margin: 0;
+}
 /* Title */
 .title {
     font-size: 1.2rem;
@@ -43,58 +48,79 @@ body {
 
 /* Form styling */
 .form-group {
-    margin-bottom: 20px;
+    width:100%;
+    max-width: 532px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--darkgray);
 }
 
 label {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto 20px auto;
     display: block;
     text-align: left;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     color: #333333;
-    font-size: 0.9rem;
+    font-size: 18px;
 }
 
 .email-input {
     width: 100%;
+    max-width: 380px;
     padding: 10px;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    margin-bottom: 15px;
+    border: none;
+    border-bottom: 1px solid var(--lightgrey);
+    margin-bottom: 25px;
     font-size: 0.9rem;
 }
 
+.email-input:focus-visible{
+    outline: none;
+}
 .continue-btn {
-    width: 100%;
-    background-color: #00e5d8;
-    color: #ffffff;
+    padding: 10px 142px;
+    margin: 0 auto;
+    display: block;
+    background-color: var(--blue);
+    color: var(--white);
     border: none;
-    padding: 10px;
-    font-size: 1rem;
+    font-size: 24px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .continue-btn:hover {
-    background-color: #00bfa5;
+    background-color: var(--black);
 }
 
 /* Terms text */
 .terms {
-    font-size: 0.8rem;
-    color: #777777;
+    font-size: 12px;
+    color: var(--darkgray);
+    padding: 25px 0 35px 0;
+    margin: 0;
 }
 
 /* Links */
 .links {
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: #555555;
+    margin-top: 25px;
+    color: var(--black);
 }
-
+.links p{
+    font-size: 12px;
+    color: var(--darkgray);
+    margin: 15px 0;
+}
+.links span{
+    color: var(--darkgray);
+    font-size: 18px;
+}
 .link {
-    color: #00bfa5;
+    color: var(--blue);
     text-decoration: none;
     font-weight: bold;
+    font-size: 18px;
 }
 
 .link:hover {
