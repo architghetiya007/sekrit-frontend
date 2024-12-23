@@ -18,9 +18,7 @@ const ConfirmLogin = () => {
       if (response) {
         // Store token in localStorage
         localStorage.setItem("auth-token", response["auth-token"]);
-
-        // Redirect to the confirm-login page
-        navigate("/confirm-login"); //TODO: Need to redirect to the third page of the home screen
+        navigate("/home"); //TODO: Need to redirect to the third page of the home screen
       } else {
         setError("Failed to retrieve token. Please try again.");
       }
