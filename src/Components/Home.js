@@ -15,6 +15,7 @@ import overviewicon from "../Images/overview.svg";
 import Riskicon from "../Images/risk.svg";
 import Coverageicon from "../Images/coverage.svg";
 import Dropdown from "react-bootstrap/Dropdown";
+import { FaArrowUpLong } from "react-icons/fa6";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import {
   AreaChart,
@@ -191,8 +192,21 @@ const Home = () => {
               </Navbar>
             </div>
             <div className="graph">
+<<<<<<< Updated upstream
               <ResponsiveContainer width="100%" height={300}>
                 <AreaChart data={dataGraph}>
+=======
+              <div className="graph-title">
+                <p>Open alerts over time</p>
+              </div>
+              <div className="graph-details">
+                <p className="graph-count">18,956</p>
+                <p className="graph-percentage"><FaArrowUpLong />2.8%</p>
+                <p className="graph-date">as of Nov 17,2024</p>
+              </div>
+              <ResponsiveContainer width="100%" height={300} style={{marginTop:"50px"}}>
+                <AreaChart data={data}>
+>>>>>>> Stashed changes
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="date" />
                   <YAxis />

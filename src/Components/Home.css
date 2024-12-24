@@ -188,12 +188,44 @@ body{
     background-color: var(--orange);
 }
 .graph{
-    padding-top: 23px;
+    padding: 20px 15px;
     width: 100%;
     max-width: 1012px;
     height: 452px;
     border: 1px solid var(--lightgrey);
     border-radius: 10px;
+    margin-top: 20px;
+}
+.graph-title{
+    color: var(--black);
+    font-size: 16px;
+    font-weight: 500;
+}
+.graph-details{
+    display: flex;
+    margin-top: 10px;
+}
+.graph-details .graph-count{
+    font-size: 24px;
+    color: var(--black);
+    font-weight: 400;
+}
+.graph-details .graph-percentage{
+    color: #ff0000;
+    font-size: 16px;
+    margin-left: 8px;
+}
+.graph .graph-date{
+    color: var(--darkgray);
+    font-size: 16px;
+    margin-left: 8px;
+}
+.recharts-legend-wrapper{
+    position: absolute;
+    width: 1002px;
+    height: auto;
+    left: -360px !important;
+    top: -30px;
 }
 .analysis{
     padding-top: 38px;
