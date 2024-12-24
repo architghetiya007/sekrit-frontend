@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Home.css"; // Import the styles
 import Logo from "../Images/logo.png";
 import { useState } from "react";
@@ -26,12 +26,29 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-
+import { tableData } from "../services/userService";
 const Home = () => {
   const [show, setShow] = useState(true);
   const handleShow = () => setShow(!show);
-
-  const data = [
+  const [data, setData] = useState(null); // To store API response
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
+  const fetchTableData = async () => {
+    try {
+      const response = await tableData();
+      setData(response);
+      setLoading(false);
+    } catch (err) {
+      setError("Failed to load coverage data");
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchTableData();
+  }, []);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+  const dataGraph = [
     { date: "Oct 18", low: 2000, medium: 4000, high: 6000, critical: 8000 },
     { date: "Oct 22", low: 2200, medium: 4200, high: 6200, critical: 8200 },
     { date: "Oct 26", low: 2400, medium: 4400, high: 6400, critical: 8400 },
@@ -96,7 +113,6 @@ const Home = () => {
                     </Dropdown.Item>
                   </DropdownButton>
                 </div>
-                {/* <<<<<<< Updated upstream */}
               </Offcanvas.Body>
             </Offcanvas>
             <div className="logo">
@@ -176,7 +192,7 @@ const Home = () => {
             </div>
             <div className="graph">
               <ResponsiveContainer width="100%" height={300}>
-                <AreaChart data={data}>
+                <AreaChart data={dataGraph}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="date" />
                   <YAxis />
@@ -235,38 +251,16 @@ const Home = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>temp1</td>
-                    <td>511</td>
-                    <td>48</td>
-                    <td>237</td>
-                    <td>153</td>
-                    <td>53</td>
-                  </tr>
-                  <tr>
-                    <td>temp2</td>
-                    <td>425</td>
-                    <td>6</td>
-                    <td>116</td>
-                    <td>201</td>
-                    <td>102</td>
-                  </tr>
-                  <tr>
-                    <td>temp3</td>
-                    <td>425</td>
-                    <td>6</td>
-                    <td>116</td>
-                    <td>201</td>
-                    <td>102</td>
-                  </tr>
-                  <tr>
-                    <td>temp3</td>
-                    <td>420</td>
-                    <td>7</td>
-                    <td>112</td>
-                    <td>199</td>
-                    <td>102</td>
-                  </tr>
+                  {data.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.repository_name}</td>
+                      <td>{item.open_alerts}</td>
+                      <td>{item.critical}</td>
+                      <td>{item.high}</td>
+                      <td>{item.medium}</td>
+                      <td>{item.low}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </Table>
             </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Coverage.css"; // Import the styles
 import Logo from "../Images/logo.png";
 import { useState } from "react";
@@ -18,12 +18,30 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import { IoSearch } from "react-icons/io5";
 import Scanicon from "../Images/scan.svg";
-
+import { coverage } from "../services/userService";
 const Coverage = () => {
   const [show, setShow] = useState(true);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(false);
+  const [data, setData] = useState(null); // To store API response
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
+
+  const fetchCoverage = async () => {
+    try {
+      const response = await coverage();
+      setData(response);
+      setLoading(false);
+    } catch (err) {
+      setError("Failed to load coverage data");
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchCoverage();
+  }, []);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <>
@@ -136,8 +154,8 @@ const Coverage = () => {
                 </div>
                 <div className="box-details">
                   <p>
-                    <span>94%</span> of repositories have{" "}
-                    <strong>sekrit</strong> enabled
+                    <span>{data?.repositories?.percent_enabled}%</span> of
+                    repositories have <strong>sekrit</strong> enabled
                   </p>
                 </div>
                 <div className="progressbar">
@@ -145,10 +163,10 @@ const Coverage = () => {
                 </div>
                 <div className="progress-details">
                   <p>
-                    <span>1.4K</span> enabled
+                    <span>{data?.repositories?.enabled}</span> enabled
                   </p>
                   <p>
-                    <span>103</span> not enabled
+                    <span>{data?.repositories?.not_enabled}</span> not enabled
                   </p>
                 </div>
               </div>
@@ -160,7 +178,8 @@ const Coverage = () => {
                 </div>
                 <div className="box-details">
                   <p>
-                    <span>95%</span> of your commits are protected
+                    <span>{data?.secret_scannin?.percent_protected}%</span> of
+                    your commits are protected
                   </p>
                 </div>
                 <div className="progressbar">
@@ -168,10 +187,12 @@ const Coverage = () => {
                 </div>
                 <div className="progress-details">
                   <p>
-                    <span>200</span> active users
+                    <span>{data?.secret_scannin?.active_users}</span> active
+                    users
                   </p>
                   <p>
-                    <span>23</span> inactive users
+                    <span>{data?.secret_scannin?.inactive_users}</span> inactive
+                    users
                   </p>
                 </div>
               </div>
