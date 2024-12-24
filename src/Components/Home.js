@@ -28,6 +28,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { tableData } from "../services/userService";
+import { Link } from "react-router-dom";
 const Home = () => {
   const [show, setShow] = useState(true);
   const handleShow = () => setShow(!show);
@@ -49,7 +50,7 @@ const Home = () => {
   }, []);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
-  const dataGraph = [
+  const graphData = [
     { date: "Oct 18", low: 2000, medium: 4000, high: 6000, critical: 8000 },
     { date: "Oct 22", low: 2200, medium: 4200, high: 6200, critical: 8200 },
     { date: "Oct 26", low: 2400, medium: 4400, high: 6400, critical: 8400 },
@@ -81,7 +82,8 @@ const Home = () => {
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                       <Nav.Link
-                        href="#overview"
+                        as={Link}
+                        to="/home"
                         className="d-flex align-items-center">
                         <img src={overviewicon} alt="overview-icon svg"></img>
                         Overview
@@ -93,7 +95,8 @@ const Home = () => {
                         Risk
                       </Nav.Link>
                       <Nav.Link
-                        href="#coverage"
+                        as={Link}
+                        to="/coverage"
                         className="d-flex align-items-center">
                         <img src={Coverageicon} alt="coverage-icon svg"></img>
                         Coverage
@@ -192,28 +195,29 @@ const Home = () => {
               </Navbar>
             </div>
             <div className="graph">
-<<<<<<< Updated upstream
-              <ResponsiveContainer width="100%" height={300}>
-                <AreaChart data={dataGraph}>
-=======
               <div className="graph-title">
                 <p>Open alerts over time</p>
               </div>
               <div className="graph-details">
                 <p className="graph-count">18,956</p>
-                <p className="graph-percentage"><FaArrowUpLong />2.8%</p>
+                <p className="graph-percentage">
+                  <FaArrowUpLong />
+                  2.8%
+                </p>
                 <p className="graph-date">as of Nov 17,2024</p>
               </div>
-              <ResponsiveContainer width="100%" height={300} style={{marginTop:"50px"}}>
-                <AreaChart data={data}>
->>>>>>> Stashed changes
+              <ResponsiveContainer
+                width="100%"
+                height={300}
+                style={{ marginTop: "50px" }}>
+                <AreaChart data={graphData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="date" />
                   <YAxis />
                   <Tooltip />
                   <Legend />
                   <Area
-                    type="linear"
+                    type="monotone"
                     dataKey="low"
                     stackId="1"
                     stroke="#82ca9d"
