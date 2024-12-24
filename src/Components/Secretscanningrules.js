@@ -15,6 +15,8 @@ import Riskicon from "../Images/risk.svg";
 import { IoSearch } from "react-icons/io5";
 import Edit from "../Images/edit.svg";
 import deleteicon from "../Images/delete.svg";
+import Dropdown from 'react-bootstrap/Dropdown';
+
 
 const Secretscan = () => {
   const [show, setShow] = useState(true);
@@ -124,7 +126,18 @@ const Secretscan = () => {
                 <div className="head-title">
                   <p>8 Patterns</p>
                 </div>
-                <button type="button">Filter</button>
+                {/* <button type="button">Filter</button> */}
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                      Dropdown Button
+                    </Dropdown.Toggle>
+                  
+                    <Dropdown.Menu>
+                      <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                      <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                      <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
               </div>
               <div className="secret-scan-body">
                 <div className="secret-scan-details">
