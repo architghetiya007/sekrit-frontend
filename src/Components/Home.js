@@ -98,6 +98,7 @@ const Home = () => {
                     </Dropdown.Item>
                   </DropdownButton>
                 </div>
+{/* <<<<<<< Updated upstream */}
               </Offcanvas.Body>
             </Offcanvas>
             <div className="logo">
@@ -117,7 +118,7 @@ const Home = () => {
                     href="#repositories"
                     className="d-flex align-items-center">
                     <img src={repositoriesicon} alt="home-icon svg"></img>
-                    Repositories
+                    Repositories<span>1.5k</span>
                   </Nav.Link>
                   <Nav.Link href="#users" className="d-flex align-items-center">
                     <img src={usericon} alt="home-icon svg"></img>
@@ -134,6 +135,18 @@ const Home = () => {
             </Navbar>
           </div>
           <div className="banner">
+          <Offcanvas>
+                <Offcanvas.Body>
+                <div className="dropdown">
+                <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                </DropdownButton>
+              </div>  
+            </Offcanvas.Body>
+          </Offcanvas> 
+        </div>
+        <div className="banner">
             <div className="main-title">
               <p>Overview</p>
             </div>

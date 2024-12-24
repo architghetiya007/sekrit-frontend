@@ -25,15 +25,6 @@ body{
     padding: 0 18px;
     margin: 0;
 }
-
-.btn-close{
-    background-image: url(./../Images/close.svg);
-    width: 100%;
-    max-width: 45px;
-    height: 40px;
-    background-size: cover;
-    background-position: center;
-}
 .nav-top{
     display: flex;
     align-items: center;
@@ -61,7 +52,7 @@ body{
     max-width: 50%;
 }
 .navbar{
-    padding: 15px 0;
+    padding: 15px 0 0 0;
 }
 .navbar-nav .nav-link{
     font-size: 14px;
@@ -75,6 +66,13 @@ body{
 .navbar-nav .nav-link:hover{
     background-color: var(--gray);
     border-radius: 4px;
+}
+.navbar-nav .nav-link span{
+    background-color: var(--gray);
+    color: var(--black);
+    margin-left: 2px;
+    padding: 2px;
+    border-radius: 5px;
 }
 .navbar-nav .nav-link img{
     padding-right: 5px;

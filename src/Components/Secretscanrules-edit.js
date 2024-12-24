@@ -1,5 +1,5 @@
 import React from "react";
-import "./Coverage.css"; // Import the styles
+import "./Secretscanrules-edit.css"; // Import the styles
 import Logo from "../Images/logo.png";
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -15,11 +15,16 @@ import Riskicon from "../Images/risk.svg"
 import Coverageicon from "../Images/coverage.svg";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import ProgressBar from 'react-bootstrap/ProgressBar';
 import { IoSearch } from "react-icons/io5";
-import Scanicon from '../Images/scan.svg';
+import Openicon from '../Images/open-icon.svg';
+import Closeicon from '../Images/close-icon.svg';
+import Editicon from '../Images/edit-icon.svg';
+import Edit from '../Images/edit.svg';
+import deleteicon from '../Images/delete.svg';
+import Form from 'react-bootstrap/Form';
 
-const Coverage = () => {
+
+const Secretscanedit = () => {
     const [show, setShow] = useState(true);
 
     const handleClose = () => setShow(false);
@@ -35,7 +40,7 @@ const Coverage = () => {
           </Button>
           <Offcanvas show={show} onHide={handleClose}>
             <Offcanvas.Header>
-              <Offcanvas.Title>Security</Offcanvas.Title>
+              <Offcanvas.Title className="title">Settings</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Navbar bg="dark" variant="dark" expand="lg">
@@ -44,25 +49,24 @@ const Coverage = () => {
                   <Nav className="me-auto">
                     <Nav.Link href="#overview" className="d-flex align-items-center"> 
                       <img src={overviewicon} alt="overview-icon svg"></img>
-                      Overview</Nav.Link>
+                      Org Structure</Nav.Link>
                     <Nav.Link href="#risk" className="d-flex align-items-center">
                       <img src={Riskicon} alt="risk-icon svg"></img>
-                      Risk</Nav.Link>
-                    <Nav.Link href="#coverage" className="d-flex align-items-center">
-                      <img src={Coverageicon} alt="coverage-icon svg"></img>
-                      Coverage</Nav.Link>
+                      ?????</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-              </Navbar>
-              <div className="dropdown-container">
-                <div className="dropdown-title">
-                  <h4>Alerts</h4>
-                </div>
-                <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                </DropdownButton>
-              </div>  
+              </Navbar>  
+              <Navbar bg="dark" variant="dark" expand="lg">
+              {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
+                <Navbar.Collapse id="basic-navbar-nav">
+                  <Nav className="me-auto">
+                    <div className="title"><h2>Security</h2></div>
+                    <Nav.Link href="#overview" className="d-flex align-items-center active"> 
+                      <img src={overviewicon} alt="overview-icon svg"></img>
+                      Secret Scanning</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+              </Navbar> 
             </Offcanvas.Body>
           </Offcanvas>
           <div className="logo">
@@ -92,53 +96,39 @@ const Coverage = () => {
                   Organization</Nav.Link>
               </Nav>
             </Navbar.Collapse>
-          
           </Navbar>
         </div>
-        <div className="banner ">
-            <div className="main-title">
-              <h4>Security Coverage</h4>
+        <div className="banner">
+            <div className="banner-title">
+                <h4>Secret Scanning Rules / Edit</h4>
             </div>
-            <div className="details">
-              <p>Security tool adoption across your organization.</p>
-            </div>
-            <div className="box-container">
-                <div className="border-box">
-                    <div className="box-title">
-                        <h4>Repositories</h4>
+            <Form>
+                <Form.Group className="mb-3 name" controlId="exampleForm.ControlInput1">
+                    <Form.Label>Pattern Name</Form.Label>
+                <Form.Control type="text" />
+                </Form.Group>
+                <Form.Group className="mb-3 expression" controlId="exampleForm.ControlInput1">
+                    <Form.Label>Secret regular expression *</Form.Label>
+                    <Form.Control type="text" placeholder="example_[A-Za-z]{40}" />
+                </Form.Group>
+                <Form.Group className="mb-3 matches" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Test String- 0 matches</Form.Label>
+                    <Form.Control as="textarea" rows={5} placeholder="Provide a sample test string to make sure your configuration matches the patterns you except."/>
+                </Form.Group>
+                <Button variant="primary grey-btn">Save</Button>
+                <Button variant="primary green-btn">Publish</Button>
+                <div className="bottom">
+                    <div className="discard-detail">
+                        <p>Discard this pattern</p>
                     </div>
-                    <div className="box-details">
-                        <p><span>94%</span> of repositories have <strong>sekrit</strong> enabled</p>
-                    </div>
-                    <div className="progressbar">
-                    <ProgressBar variant="success" now={40} />
-                    </div>
-                    <div className="progress-details">
-                        <p><span>1.4K</span> enabled</p>
-                        <p><span>103</span> not enabled</p>
-                    </div>
+                    <Button type="btn">Discard</Button>
                 </div>
-                <div className="border-box">
-                    <div className="box-title">
-                        <h4>Secret Scanning<img src={Scanicon}></img></h4>
-                    </div>
-                    <div className="box-details">
-                        <p><span>95%</span> of your commits are protected</p>
-                    </div>
-                    <div className="progressbar">
-                    <ProgressBar variant="success" now={40} />
-                    </div>
-                    <div className="progress-details">
-                        <p><span>200</span> active users</p>
-                        <p><span>23</span> inactive users</p>
-                    </div>
-                </div>
-            </div>
-        </div>    
+            </Form>
+        </div>
       </div>
     </div>
     </>
   );
 };
 
-export default Coverage;
+export default Secretscanedit;

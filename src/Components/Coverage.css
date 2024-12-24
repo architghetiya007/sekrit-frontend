@@ -11,6 +11,24 @@ h1,h2,h3,h4,p{
     margin: 0;
     padding: 0;
 }
+.nav-top .search-bar{
+    margin: 0 0 0 auto;
+}
+.search-bar{
+    display: flex;
+    align-items: center;
+    background-color: var(--gray);
+    padding: 5px;
+}
+.search-bar input,
+.search-bar button{
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    font-weight: normal;
+}
 .banner{
     display: flex;
     flex-direction: column;
@@ -34,6 +52,10 @@ h1,h2,h3,h4,p{
     font-size: 14px;
     font-weight: 600;
     color: var(--black);
+}
+.border-box .box-title img{
+    text-align: center;
+    margin-left: 5px;
 }
 .border-box .box-details{
     font-size: 12px;
