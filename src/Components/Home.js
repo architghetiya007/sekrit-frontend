@@ -89,6 +89,8 @@ const Home = () => {
                         Overview
                       </Nav.Link>
                       <Nav.Link
+                        as={Link}
+                        to="/custom-rules"
                         href="#risk"
                         className="d-flex align-items-center">
                         <img src={Riskicon} alt="risk-icon svg"></img>

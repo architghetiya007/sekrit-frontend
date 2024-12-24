@@ -19,6 +19,8 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import { IoSearch } from "react-icons/io5";
 import Scanicon from "../Images/scan.svg";
 import { coverage } from "../services/userService";
+import { Link } from "react-router-dom";
+
 const Coverage = () => {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
@@ -64,19 +66,22 @@ const Coverage = () => {
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                       <Nav.Link
-                        href="#overview"
+                        as={Link}
+                        to="/home"
                         className="d-flex align-items-center">
                         <img src={overviewicon} alt="overview-icon svg"></img>
                         Overview
                       </Nav.Link>
                       <Nav.Link
-                        href="#risk"
+                        as={Link}
+                        to="/custom-rules"
                         className="d-flex align-items-center">
                         <img src={Riskicon} alt="risk-icon svg"></img>
                         Risk
                       </Nav.Link>
                       <Nav.Link
-                        href="#coverage"
+                        as={Link}
+                        to="/coverage"
                         className="d-flex align-items-center">
                         <img src={Coverageicon} alt="coverage-icon svg"></img>
                         Coverage
