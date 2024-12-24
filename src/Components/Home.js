@@ -5,7 +5,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Toggle from "./../Images/nav-toggler.svg";
-import { Navbar, Nav, NavItem, Badge } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import homeicon from "../Images/home-icon.svg";
 import repositoriesicon from "../Images/reposiitories-icon.svg";
 import usericon from "../Images/user-icon.svg";
@@ -29,8 +29,6 @@ import {
 
 const Home = () => {
   const [show, setShow] = useState(true);
-
-  const handleClose = () => setShow(false);
   const handleShow = () => setShow(!show);
 
   const data = [
@@ -98,7 +96,7 @@ const Home = () => {
                     </Dropdown.Item>
                   </DropdownButton>
                 </div>
-{/* <<<<<<< Updated upstream */}
+                {/* <<<<<<< Updated upstream */}
               </Offcanvas.Body>
             </Offcanvas>
             <div className="logo">
@@ -135,18 +133,22 @@ const Home = () => {
             </Navbar>
           </div>
           <div className="banner">
-          <Offcanvas>
-                <Offcanvas.Body>
+            <Offcanvas>
+              <Offcanvas.Body>
                 <div className="dropdown">
-                <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                </DropdownButton>
-              </div>  
-            </Offcanvas.Body>
-          </Offcanvas> 
-        </div>
-        <div className="banner">
+                  <DropdownButton
+                    id="dropdown-basic-button"
+                    title="Dropdown button">
+                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">
+                      Another action
+                    </Dropdown.Item>
+                  </DropdownButton>
+                </div>
+              </Offcanvas.Body>
+            </Offcanvas>
+          </div>
+          <div className="banner">
             <div className="main-title">
               <p>Overview</p>
             </div>
