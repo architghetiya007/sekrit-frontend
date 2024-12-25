@@ -14,10 +14,15 @@ import overviewicon from "../Images/overview.svg";
 import Riskicon from "../Images/risk.svg";
 import { IoSearch } from "react-icons/io5";
 import Form from "react-bootstrap/Form";
+import Keyicon from "../Images/Key.svg";
+import { Link } from "react-router-dom";
+import Coverageicon from "../Images/coverage.svg";
 
 const Secretscanedit = () => {
   const [show, setShow] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
+  const toggleDropdown = () => setIsOpen(!isOpen);
   const handleClose = () => setShow(!show);
 
   return (
@@ -41,36 +46,155 @@ const Secretscanedit = () => {
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                       <Nav.Link
-                        href="#overview"
+                        as={Link}
+                        to="/home"
                         className="d-flex align-items-center">
                         <img src={overviewicon} alt="overview-icon svg"></img>
-                        Org Structure
+                        Overview
                       </Nav.Link>
                       <Nav.Link
+                        as={Link}
+                        to="/custom-rules"
                         href="#risk"
                         className="d-flex align-items-center">
                         <img src={Riskicon} alt="risk-icon svg"></img>
-                        ?????
+                        Risk
                       </Nav.Link>
-                    </Nav>
-                  </Navbar.Collapse>
-                </Navbar>
-                <Navbar bg="dark" variant="dark" expand="lg">
-                  {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
-                  <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                      <div className="title">
-                        <h2>Security</h2>
-                      </div>
                       <Nav.Link
-                        href="#overview"
-                        className="d-flex align-items-center active">
-                        <img src={overviewicon} alt="overview-icon svg"></img>
-                        Secret Scanning
+                        as={Link}
+                        to="/coverage"
+                        className="d-flex align-items-center">
+                        <img src={Coverageicon} alt="coverage-icon svg"></img>
+                        Coverage
                       </Nav.Link>
                     </Nav>
                   </Navbar.Collapse>
                 </Navbar>
+                <div
+                  style={{
+                    position: "relative",
+                    width: "200px",
+                    margin: "20px auto",
+                    // border: "1px solid #ddd",
+                    borderRadius: "5px",
+                    padding: "10px",
+                    // backgroundColor: "#f9f9f9",
+                  }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      cursor: "pointer",
+                    }}
+                    onClick={toggleDropdown}>
+                    <h4 style={{ margin: 0, fontSize: "16px", color: "#333" }}>
+                      <img
+                        src={Keyicon}
+                        style={{ marginRight: "10px" }}
+                        alt="home-icon svg"></img>
+                      Secrets Scanning
+                    </h4>
+                    <span
+                      style={{
+                        fontSize: "16px",
+                        display: "inline-block",
+                        transform: isOpen ? "rotate(90deg)" : "rotate(0)",
+                        transition: "transform 0.3s ease",
+                      }}>
+                      &gt;
+                    </span>
+                  </div>
+                  {isOpen && (
+                    <ul
+                      style={{
+                        position: "absolute",
+                        top: "100%",
+                        left: 0,
+                        right: 0,
+                        listStyle: "none",
+                        padding: "5px 0",
+                        margin: "0",
+                        backgroundColor: "#fff",
+                        // boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                        borderRadius: "5px",
+                        zIndex: 10,
+                      }}>
+                      <li
+                        style={{
+                          padding: "5px 5px",
+                          paddingLeft: "20px",
+                          cursor: "pointer",
+                          fontSize: "14px",
+                          color: "#333",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                        }}>
+                        <a
+                          href="#/action-1"
+                          style={{
+                            textDecoration: "none",
+                            color: "inherit",
+                            display: "block",
+                          }}>
+                          Default Pattern
+                        </a>
+                        <span
+                          style={{
+                            width: "24px",
+                            height: "24px",
+                            borderRadius: "50%",
+                            backgroundColor: "#82ca9d",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            color: "#fff",
+                            fontSize: "12px",
+                            fontWeight: "bold",
+                          }}>
+                          3
+                        </span>
+                      </li>
+                      <li
+                        style={{
+                          padding: "5px 5px",
+                          paddingLeft: "20px",
+                          cursor: "pointer",
+                          fontSize: "14px",
+                          color: "#333",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                        }}>
+                        <a
+                          href="#/action-2"
+                          style={{
+                            textDecoration: "none",
+                            color: "inherit",
+                            display: "block",
+                          }}>
+                          Custom Pattern
+                        </a>
+                        <span
+                          style={{
+                            width: "24px",
+                            height: "24px",
+                            borderRadius: "50%",
+                            backgroundColor: "#82ca9d",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            color: "#fff",
+                            fontSize: "12px",
+                            fontWeight: "bold",
+                          }}>
+                          3
+                        </span>
+                      </li>
+                    </ul>
+                  )}
+                </div>
               </Offcanvas.Body>
             </Offcanvas>
             <div className="logo">

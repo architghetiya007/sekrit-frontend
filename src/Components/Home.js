@@ -73,8 +73,7 @@ const Home = () => {
             <Button
               variant="primary"
               onClick={handleShow}
-              className="toggle-icon"
-            >
+              className="toggle-icon">
               <img src={Toggle} alt="nav-toggle icon" />
             </Button>
             <Offcanvas show={show}>
@@ -89,8 +88,7 @@ const Home = () => {
                       <Nav.Link
                         as={Link}
                         to="/home"
-                        className="d-flex align-items-center"
-                      >
+                        className="d-flex align-items-center">
                         <img src={overviewicon} alt="overview-icon svg"></img>
                         Overview
                       </Nav.Link>
@@ -98,36 +96,20 @@ const Home = () => {
                         as={Link}
                         to="/custom-rules"
                         href="#risk"
-                        className="d-flex align-items-center"
-                      >
+                        className="d-flex align-items-center">
                         <img src={Riskicon} alt="risk-icon svg"></img>
                         Risk
                       </Nav.Link>
                       <Nav.Link
                         as={Link}
                         to="/coverage"
-                        className="d-flex align-items-center"
-                      >
+                        className="d-flex align-items-center">
                         <img src={Coverageicon} alt="coverage-icon svg"></img>
                         Coverage
                       </Nav.Link>
                     </Nav>
                   </Navbar.Collapse>
                 </Navbar>
-                {/* <div className="dropdown-container">
-                  <div className="dropdown-title">
-                    <h4>Alerts</h4>
-                  </div>
-                  <DropdownButton
-                    id="dropdown-basic-button"
-                    title="Dropdown button"
-                  >
-                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
-                      Another action
-                    </Dropdown.Item>
-                  </DropdownButton>
-                </div> */}
                 <div
                   style={{
                     position: "relative",
@@ -137,8 +119,7 @@ const Home = () => {
                     borderRadius: "5px",
                     padding: "10px",
                     // backgroundColor: "#f9f9f9",
-                  }}
-                >
+                  }}>
                   <div
                     style={{
                       display: "flex",
@@ -146,14 +127,12 @@ const Home = () => {
                       alignItems: "center",
                       cursor: "pointer",
                     }}
-                    onClick={toggleDropdown}
-                  >
+                    onClick={toggleDropdown}>
                     <h4 style={{ margin: 0, fontSize: "16px", color: "#333" }}>
                       <img
                         src={Keyicon}
                         style={{ marginRight: "10px" }}
-                        alt="home-icon svg"
-                      ></img>
+                        alt="home-icon svg"></img>
                       Secrets Scanning
                     </h4>
                     <span
@@ -162,8 +141,7 @@ const Home = () => {
                         display: "inline-block",
                         transform: isOpen ? "rotate(90deg)" : "rotate(0)",
                         transition: "transform 0.3s ease",
-                      }}
-                    >
+                      }}>
                       &gt;
                     </span>
                   </div>
@@ -181,8 +159,7 @@ const Home = () => {
                         // boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                         borderRadius: "5px",
                         zIndex: 10,
-                      }}
-                    >
+                      }}>
                       <li
                         style={{
                           padding: "5px 5px",
@@ -193,16 +170,14 @@ const Home = () => {
                           display: "flex",
                           justifyContent: "space-between",
                           alignItems: "center",
-                        }}
-                      >
+                        }}>
                         <a
                           href="#/action-1"
                           style={{
                             textDecoration: "none",
                             color: "inherit",
                             display: "block",
-                          }}
-                        >
+                          }}>
                           Default Pattern
                         </a>
                         <span
@@ -217,8 +192,7 @@ const Home = () => {
                             color: "#fff",
                             fontSize: "12px",
                             fontWeight: "bold",
-                          }}
-                        >
+                          }}>
                           3
                         </span>
                       </li>
@@ -232,16 +206,14 @@ const Home = () => {
                           display: "flex",
                           justifyContent: "space-between",
                           alignItems: "center",
-                        }}
-                      >
+                        }}>
                         <a
                           href="#/action-2"
                           style={{
                             textDecoration: "none",
                             color: "inherit",
                             display: "block",
-                          }}
-                        >
+                          }}>
                           Custom Pattern
                         </a>
                         <span
@@ -256,8 +228,7 @@ const Home = () => {
                             color: "#fff",
                             fontSize: "12px",
                             fontWeight: "bold",
-                          }}
-                        >
+                          }}>
                           3
                         </span>
                       </li>
@@ -281,8 +252,7 @@ const Home = () => {
                   </Nav.Link>
                   <Nav.Link
                     href="#repositories"
-                    className="d-flex align-items-center"
-                  >
+                    className="d-flex align-items-center">
                     <img src={repositoriesicon} alt="home-icon svg"></img>
                     Repositories<span>1.5k</span>
                   </Nav.Link>
@@ -292,8 +262,7 @@ const Home = () => {
                   </Nav.Link>
                   <Nav.Link
                     href="#organization"
-                    className="d-flex align-items-center"
-                  >
+                    className="d-flex align-items-center">
                     <img src={organizationicon} alt="home-icon svg"></img>
                     Organization
                   </Nav.Link>
@@ -307,8 +276,7 @@ const Home = () => {
                 <div className="dropdown">
                   <DropdownButton
                     id="dropdown-basic-button"
-                    title="Dropdown button"
-                  >
+                    title="Dropdown button">
                     <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                     <Dropdown.Item href="#/action-2">
                       Another action
@@ -332,14 +300,12 @@ const Home = () => {
                   <Nav className="me-auto">
                     <Nav.Link
                       href="#detected"
-                      className="d-flex align-items-center"
-                    >
+                      className="d-flex align-items-center">
                       Detected
                     </Nav.Link>
                     <Nav.Link
                       href="#prevented"
-                      className="d-flex align-items-center"
-                    >
+                      className="d-flex align-items-center">
                       Prevented
                     </Nav.Link>
                   </Nav>
@@ -361,8 +327,7 @@ const Home = () => {
               <ResponsiveContainer
                 width="100%"
                 height={300}
-                style={{ marginTop: "50px" }}
-              >
+                style={{ marginTop: "50px" }}>
                 <AreaChart data={graphData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="date" />
