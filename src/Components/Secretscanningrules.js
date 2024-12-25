@@ -6,12 +6,11 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Header from "../Common/Header/Header";
 
 const Secretscan = () => {
-
   return (
     <>
       <div className="main">
         <div className="home-container">
-        <Header secretscanEdit={true} />
+          <Header secretscanEdit={true} />
           <div className="banner">
             <div className="banner-title">
               <h3>Secret Scanning Rules</h3>
