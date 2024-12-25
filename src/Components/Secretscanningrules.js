@@ -1,32 +1,11 @@
 import React from "react";
 import "./Secretscanningrules.css"; // Import the styles
-import Logo from "../Images/logo.png";
-import { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import Toggle from "./../Images/nav-toggler.svg";
-import { Navbar, Nav } from "react-bootstrap";
-import homeicon from "../Images/home-icon.svg";
-import repositoriesicon from "../Images/reposiitories-icon.svg";
-import usericon from "../Images/user-icon.svg";
-import organizationicon from "../Images/organization-icon.svg";
-import overviewicon from "../Images/overview.svg";
-import Riskicon from "../Images/risk.svg";
-import Coverageicon from "../Images/coverage.svg";
-import { IoSearch } from "react-icons/io5";
 import Edit from "../Images/edit.svg";
 import deleteicon from "../Images/delete.svg";
 import Dropdown from "react-bootstrap/Dropdown";
-import Keyicon from "../Images/Key.svg";
-import { Link } from "react-router-dom";
 import Header from "../Common/Header/Header";
 
 const Secretscan = () => {
-  const [show, setShow] = useState(true);
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleDropdown = () => setIsOpen(!isOpen);
-  const handleClose = () => setShow(!show);
 
   return (
     <>
