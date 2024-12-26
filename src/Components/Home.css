@@ -18,6 +18,7 @@ body{
 }
 .main{
     padding: 24px 0 24px 0;
+    border: 1px solid var(--lightgrey);
 }
 .home-container{
     width: 100% ;

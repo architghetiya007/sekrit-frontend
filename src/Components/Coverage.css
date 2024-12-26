@@ -17,7 +17,9 @@ h1,h2,h3,h4,p{
 .search-bar{
     display: flex;
     align-items: center;
-    background-color: var(--gray);
+    border: 1px solid var(--lightgrey);
+    border-radius: 4px;
+    /* background-color: var(--gray); */
     padding: 5px;
 }
 .search-bar input,

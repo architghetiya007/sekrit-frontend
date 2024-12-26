@@ -282,7 +282,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
         </div>
         <div className="search-bar">
           <button type="submit">
-            <IoSearch />
+            <IoSearch style={{ color: "#9CA3AF"}}/>
           </button>
           <input type="search" placeholder="| Type to Seach"></input>
         </div>
@@ -296,7 +296,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
           }}
         ></div>
       </div>
-      <div className="nav-bottom">
+      <div className="nav-bottom bottom-border">
         <Navbar bg="dark" variant="dark" expand="lg">
           {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
           <Navbar.Collapse id="basic-navbar-nav">
