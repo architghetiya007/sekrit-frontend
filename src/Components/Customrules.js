@@ -5,11 +5,12 @@ import { IoCheckmark, IoSearch } from "react-icons/io5";
 import Openicon from "../Images/open-icon.svg";
 import Closeicon from "../Images/close-icon.svg";
 import Editicon from "../Images/edit-icon.svg";
-import { riskData } from "../services/userService";
+import { globalConfig, riskData } from "../services/userService";
 import Header from "../Common/Header/Header";
 
 const Customrules = () => {
   const [data, setData] = useState(null); // To store API response
+  const [config, setConfig] = useState(null); // To store API response
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
   const [selectedMenu, setSelectedMenu] = useState("default");
@@ -24,12 +25,24 @@ const Customrules = () => {
       setLoading(false);
     }
   };
+
+  const globalSetting = async () => {
+    try {
+      const response = await globalConfig();
+      setConfig(response);
+      setLoading(false);
+    } catch (err) {
+      setError("Failed to load coverage data");
+      setLoading(false);
+    }
+  };
   const onClickItem = (val) => {
     setSelectedMenu(val);
   };
 
   useEffect(() => {
     fetchData();
+    globalSetting();
   }, []);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -55,8 +68,7 @@ const Customrules = () => {
                 <button
                   type="button"
                   className="btn-default"
-                  style={{ borderRadius: "8px" }}
-                >
+                  style={{ borderRadius: "8px" }}>
                   Repo
                 </button>
                 <button
@@ -65,15 +77,13 @@ const Customrules = () => {
                   style={{
                     borderTopLeftRadius: "8px",
                     borderBottomLeftRadius: "8px",
-                  }}
-                >
+                  }}>
                   <div
-                    style={{ display: "flex", alignItems: "center", gap: 2 }}
-                  >
+                    style={{ display: "flex", alignItems: "center", gap: 2 }}>
                     {selectedMenu === "default" && (
                       <IoCheckmark style={{ fontSize: "18px" }} />
                     )}
-                    Default<span>81</span>
+                    Default<span>{config?.default_pattern_count}</span>
                   </div>
                 </button>
                 <button
@@ -82,15 +92,13 @@ const Customrules = () => {
                   style={{
                     borderTopRightRadius: "8px",
                     borderBottomRightRadius: "8px",
-                  }}
-                >
+                  }}>
                   <div
-                    style={{ display: "flex", alignItems: "center", gap: 2 }}
-                  >
+                    style={{ display: "flex", alignItems: "center", gap: 2 }}>
                     {selectedMenu !== "default" && (
                       <IoCheckmark style={{ fontSize: "18px" }} />
                     )}
-                    Custom<span>21</span>
+                    Custom<span>{config?.custom_pattern_count}</span>
                   </div>
                 </button>
               </div>

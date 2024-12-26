@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Secretscanningrules.css"; // Import the styles
 import Edit from "../Images/edit.svg";
 import deleteicon from "../Images/delete.svg";
-import Dropdown from "react-bootstrap/Dropdown";
 import Header from "../Common/Header/Header";
 import { IoCheckmark } from "react-icons/io5";
 const Secretscan = () => {
@@ -22,32 +21,13 @@ const Secretscan = () => {
                 <div className="head-title">
                   <p>8 Patterns</p>
                 </div>
-                {/* <button type="button">Filter</button> */}
-                {/* <Dropdown>
-                  <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Dropdown Button
-                  </Dropdown.Toggle>
-
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
-                      Another action
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
-                      Something else
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown> */}
                 <div
                   style={{
                     position: "relative",
                     width: "200px",
-                    // border: "1px solid #ddd",
                     borderRadius: "5px",
                     padding: "10px",
-                    // backgroundColor: "#f9f9f9",
-                  }}
-                >
+                  }}>
                   <div
                     style={{
                       display: "flex",
@@ -55,8 +35,7 @@ const Secretscan = () => {
                       alignItems: "center",
                       cursor: "pointer",
                     }}
-                    onClick={toggleDropdown}
-                  >
+                    onClick={toggleDropdown}>
                     <h4 style={{ margin: 0, fontSize: "16px", color: "#333" }}>
                       Filter
                     </h4>
@@ -67,8 +46,7 @@ const Secretscan = () => {
                         transform: isOpen ? "rotate(90deg)" : "rotate(0)",
                         transition: "transform 0.3s ease",
                         paddingLeft: "10px",
-                      }}
-                    >
+                      }}>
                       &gt;
                     </span>
                   </div>
@@ -86,13 +64,11 @@ const Secretscan = () => {
                         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                         borderRadius: "5px",
                         zIndex: 10,
-                      }}
-                    >
+                      }}>
                       <li
                         style={{
                           padding: "5px 10px",
-                        }}
-                      >
+                        }}>
                         Filter By
                       </li>
                       <li
@@ -105,18 +81,18 @@ const Secretscan = () => {
                           display: "flex",
                           justifyContent: "space-between",
                           alignItems: "center",
-                        }}
-                      >
+                        }}>
                         <a
                           href="#/action-1"
                           style={{
                             textDecoration: "none",
                             color: "inherit",
                             display: "block",
-                          }}
-                        >
+                          }}>
                           Published{" "}
-                          <IoCheckmark style={{ marginLeft: "10px", fontSize: "20px"}} />
+                          <IoCheckmark
+                            style={{ marginLeft: "10px", fontSize: "20px" }}
+                          />
                         </a>
                       </li>
                       <li
@@ -129,18 +105,18 @@ const Secretscan = () => {
                           display: "flex",
                           justifyContent: "space-between",
                           alignItems: "center",
-                        }}
-                      >
+                        }}>
                         <a
                           href="#/action-2"
                           style={{
                             textDecoration: "none",
                             color: "inherit",
                             display: "block",
-                          }}
-                        >
+                          }}>
                           Not Published{" "}
-                          <IoCheckmark style={{ marginLeft: "10px", fontSize: "20px" }} />
+                          <IoCheckmark
+                            style={{ marginLeft: "10px", fontSize: "20px" }}
+                          />
                         </a>
                       </li>
                       <li
@@ -153,16 +129,14 @@ const Secretscan = () => {
                           display: "flex",
                           justifyContent: "space-between",
                           alignItems: "center",
-                        }}
-                      >
+                        }}>
                         <a
                           href="#/action-2"
                           style={{
                             textDecoration: "none",
                             color: "inherit",
                             display: "block",
-                          }}
-                        >
+                          }}>
                           Newest{" "}
                         </a>
                       </li>
