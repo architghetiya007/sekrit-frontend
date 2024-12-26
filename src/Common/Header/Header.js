@@ -38,7 +38,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
           />
         </Button>
         {secretscanEdit ? (
-          <Offcanvas show={show}>
+          <Offcanvas show={show} >
             <Offcanvas.Header>
               <Offcanvas.Title className="title">Settings</Offcanvas.Title>
             </Offcanvas.Header>
@@ -304,7 +304,9 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
               <Nav.Link
                 as={Link}
                 to={"/home"}
-                className="d-flex align-items-center"
+                className={`d-flex align-items-center ${
+                  location.pathname.includes("home") && "active"
+                }`}
               >
                 <img src={homeicon} alt="home-icon svg"></img>
                 Home
@@ -323,7 +325,9 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
               <Nav.Link
                 as={Link}
                 to={"/secret-scan"}
-                className="d-flex align-items-center"
+                className={`d-flex align-items-center ${
+                  location.pathname.includes("secret-scan") && "active"
+                }`}
               >
                 <img src={organizationicon} alt="home-icon svg"></img>
                 Organization

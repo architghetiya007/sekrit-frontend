@@ -19,4 +19,9 @@ code {
 
 .offcanvas.offcanvas-start.show {
   background-color: #F6F8FA;
+  border-right: 1px solid var(--lightgrey);
+  min-height: calc(100vh - 150px);
+}
+.banner {
+  padding-top: 36px !important;
 }
