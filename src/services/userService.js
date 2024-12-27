@@ -20,3 +20,7 @@ export const riskData = () => {
 export const globalConfig = () => {
   return apiClient.get("/v1/global_config");
 };
+
+export const dataOfgraph = () => {
+  return apiClient.get("/v1/secrets/alert_over_time");
+};
