@@ -13,34 +13,34 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { tableData } from "../services/userService";
+import { tableData, dataOfgraph } from "../services/userService";
 import Header from "../Common/Header/Header";
-const graphData = [
-  { date: "Oct 18", low: 2000, medium: 4000, high: 6000, critical: 8000 },
-  { date: "Oct 22", low: 2200, medium: 4200, high: 6200, critical: 8200 },
-  { date: "Oct 26", low: 2400, medium: 4400, high: 6400, critical: 8400 },
-  { date: "Oct 30", low: 2600, medium: 4600, high: 6600, critical: 8600 },
-  { date: "Nov 3", low: 2800, medium: 4800, high: 6800, critical: 8800 },
-  { date: "Nov 7", low: 3000, medium: 5000, high: 7000, critical: 9000 },
-  { date: "Nov 12", low: 3200, medium: 5200, high: 7200, critical: 9200 },
-  { date: "Nov 17", low: 3400, medium: 5400, high: 7400, critical: 9400 },
-];
+
 const Home = () => {
   const [data, setData] = useState(null); // To store API response
+  const [graphData, setgraphData] = useState(null); // To store API response
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
-  const fetchTableData = async () => {
+
+  const fetchData = async () => {
+    setLoading(true); // Set loading to true before fetching data
     try {
-      const response = await tableData();
-      setData(response);
-      setLoading(false);
+      const [fetchTableData, graphData] = await Promise.all([
+        tableData(),
+        dataOfgraph(),
+      ]);
+
+      setData(fetchTableData); // Set the data from the first API
+      setgraphData(graphData); // Set the data from the second API
     } catch (err) {
-      setError("Failed to load coverage data");
-      setLoading(false);
+      setError("Failed to load data"); // Handle errors
+    } finally {
+      setLoading(false); // Set loading to false after both APIs complete
     }
   };
+
   useEffect(() => {
-    fetchTableData();
+    fetchData();
   }, []);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -68,14 +68,12 @@ const Home = () => {
                   <Nav className="me-auto">
                     <Nav.Link
                       href="#detected"
-                      className="d-flex align-items-center"
-                    >
+                      className="d-flex align-items-center">
                       Detected
                     </Nav.Link>
                     <Nav.Link
                       href="#prevented"
-                      className="d-flex align-items-center"
-                    >
+                      className="d-flex align-items-center">
                       Prevented
                     </Nav.Link>
                   </Nav>
@@ -87,54 +85,49 @@ const Home = () => {
                 <p>Open alerts over time</p>
               </div>
               <div className="graph-details">
-                <p className="graph-count">18,956</p>
+                <p className="graph-count">{graphData?.total_alerts}</p>
                 <p className="graph-percentage">
                   <FaArrowUpLong />
-                  2.8%
+                  {/* <BiDownArrowAlt /> */}
+                  {graphData?.compared_to_last_month?.movement_value}
                 </p>
                 <p className="graph-date">as of Nov 17,2024</p>
               </div>
-              <ResponsiveContainer
-                width="100%"
-                height={300}
-                style={{ marginTop: "50px" }}
-              >
-                <AreaChart data={graphData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="date" />
-                  <YAxis />
-                  <Tooltip />
-                  {/* <Legend /> */}
-                  <Area
-                    type="monotone"
-                    dataKey="low"
-                    stackId="1"
-                    stroke="#82ca9d"
-                    fill="#82ca9d"
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="medium"
-                    stackId="1"
-                    stroke="#ffc658"
-                    fill="#ffc658"
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="high"
-                    stackId="1"
-                    stroke="#ff7300"
-                    fill="#ff7300"
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="critical"
-                    stackId="1"
-                    stroke="#d32f2f"
-                    fill="#d32f2f"
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
+              {graphData?.alerts_over_time_count?.length > 0 && (
+                <ResponsiveContainer
+                  width="100%"
+                  height={300}
+                  style={{ marginTop: "50px" }}>
+                  <AreaChart data={graphData?.alerts_over_time_count ?? []}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="date" />
+                    <YAxis />
+                    <Tooltip />
+                    {/* <Legend /> */}
+                    <Area
+                      type="monotone"
+                      dataKey="value_low"
+                      stackId="1"
+                      stroke="#82ca9d"
+                      fill="#82ca9d"
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="value_medium"
+                      stackId="1"
+                      stroke="#ffc658"
+                      fill="#ffc658"
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="value_high"
+                      stackId="1"
+                      stroke="#ff7300"
+                      fill="#ff7300"
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              )}
             </div>
             <div className="analysis">
               <div className="section-title">

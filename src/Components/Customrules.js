@@ -5,35 +5,44 @@ import { IoCheckmark, IoSearch } from "react-icons/io5";
 import Openicon from "../Images/open-icon.svg";
 import Closeicon from "../Images/close-icon.svg";
 import Editicon from "../Images/edit-icon.svg";
-import { riskData } from "../services/userService";
+import { globalConfig, riskData } from "../services/userService";
 import Header from "../Common/Header/Header";
 
 const Customrules = () => {
   const [data, setData] = useState(null); // To store API response
+  const [config, setConfig] = useState(null); // To store API response
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
   const [selectedMenu, setSelectedMenu] = useState("default");
 
-  const fetchData = async () => {
-    try {
-      const response = await riskData();
-      setData(response);
-      setLoading(false);
-    } catch (err) {
-      setError("Failed to load coverage data");
-      setLoading(false);
-    }
-  };
   const onClickItem = (val) => {
     setSelectedMenu(val);
+  };
+
+  const fetchData = async () => {
+    setLoading(true); // Set loading to true before fetching data
+    try {
+      const [riskResponse, globalConfigResponse] = await Promise.all([
+        riskData(),
+        globalConfig(),
+      ]);
+
+      setData(riskResponse); // Set the data from the first API
+      setConfig(globalConfigResponse); // Set the data from the second API
+    } catch (err) {
+      setError("Failed to load data"); // Handle errors
+    } finally {
+      setLoading(false); // Set loading to false after both APIs complete
+    }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
-
+  console.log(data, ">>>>.");
   return (
     <div className="main-body">
       <div className="main">
@@ -60,8 +69,7 @@ const Customrules = () => {
                 <button
                   type="button"
                   className="btn-default"
-                  style={{ borderRadius: "8px" }}
-                >
+                  style={{ borderRadius: "8px" }}>
                   Repo
                 </button>
                 <button
@@ -70,15 +78,13 @@ const Customrules = () => {
                   style={{
                     borderTopLeftRadius: "8px",
                     borderBottomLeftRadius: "8px",
-                  }}
-                >
+                  }}>
                   <div
-                    style={{ display: "flex", alignItems: "center", gap: 2 }}
-                  >
+                    style={{ display: "flex", alignItems: "center", gap: 2 }}>
                     {selectedMenu === "default" && (
                       <IoCheckmark style={{ fontSize: "18px" }} />
                     )}
-                    Default<span>81</span>
+                    Default<span>{config?.default_pattern_count}</span>
                   </div>
                 </button>
                 <button
@@ -87,15 +93,13 @@ const Customrules = () => {
                   style={{
                     borderTopRightRadius: "8px",
                     borderBottomRightRadius: "8px",
-                  }}
-                >
+                  }}>
                   <div
-                    style={{ display: "flex", alignItems: "center", gap: 2 }}
-                  >
+                    style={{ display: "flex", alignItems: "center", gap: 2 }}>
                     {selectedMenu !== "default" && (
                       <IoCheckmark style={{ fontSize: "18px" }} />
                     )}
-                    Custom<span>21</span>
+                    Custom<span>{config?.custom_pattern_count}</span>
                   </div>
                 </button>
               </div>

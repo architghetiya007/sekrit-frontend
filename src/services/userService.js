@@ -16,3 +16,11 @@ export const tableData = () => {
 export const riskData = () => {
   return apiClient.get("/v1/secrets/alerts/custom");
 };
+
+export const globalConfig = () => {
+  return apiClient.get("/v1/global_config");
+};
+
+export const dataOfgraph = () => {
+  return apiClient.get("/v1/secrets/alert_over_time");
+};

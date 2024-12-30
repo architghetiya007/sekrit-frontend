@@ -14,14 +14,25 @@ import Coverageicon from "../../Images/coverage.svg";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
+import { globalConfig } from "../../services/userService";
 const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
   const [show, setShow] = useState(true);
   const handleShow = () => setShow(!show);
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const toggleDropdown = () => setIsOpen(!isOpen);
+  const [config, setConfig] = useState(); // To store API response
+
+  const globalSetting = async () => {
+    const response = await globalConfig();
+    setConfig(response);
+  };
+
+  useEffect(() => {
+    globalSetting();
+  }, []);
   return (
     <>
       <div className="nav-top">
@@ -29,8 +40,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
           variant="primary"
           onClick={handleShow}
           style={{ height: "30px", width: "30px" }}
-          className="toggle-icon"
-        >
+          className="toggle-icon">
           <img
             style={{ marginTop: "10px", marginLeft: "6px" }}
             src={Toggle}
@@ -49,15 +59,13 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
                   <Nav className="me-auto">
                     <Nav.Link
                       href="#overview"
-                      className="d-flex align-items-center"
-                    >
+                      className="d-flex align-items-center">
                       <img src={overviewicon} alt="overview-icon svg"></img>
                       Org Structure
                     </Nav.Link>
                     <Nav.Link
                       href="#risk"
-                      className="d-flex align-items-center"
-                    >
+                      className="d-flex align-items-center">
                       <img src={Riskicon} alt="risk-icon svg"></img>
                       ?????
                     </Nav.Link>
@@ -73,8 +81,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
                     </div>
                     <Nav.Link
                       href="#overview"
-                      className="d-flex align-items-center active"
-                    >
+                      className="d-flex align-items-center active">
                       <img src={overviewicon} alt="overview-icon svg"></img>
                       Secret Scanning
                     </Nav.Link>
@@ -98,8 +105,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
                       to="/home"
                       className={`d-flex align-items-center ${
                         location.pathname.includes("home") && "active"
-                      }`}
-                    >
+                      }`}>
                       <img src={overviewicon} alt="overview-icon svg"></img>
                       Overview
                     </Nav.Link>
@@ -109,8 +115,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
                       href="#risk"
                       className={`d-flex align-items-center ${
                         location.pathname.includes("custom-rules") && "active"
-                      }`}
-                    >
+                      }`}>
                       <img src={Riskicon} alt="risk-icon svg"></img>
                       Risk
                     </Nav.Link>
@@ -119,8 +124,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
                       to="/coverage"
                       className={`d-flex align-items-center ${
                         location.pathname.includes("coverage") && "active"
-                      }`}
-                    >
+                      }`}>
                       <img src={Coverageicon} alt="coverage-icon svg"></img>
                       Coverage
                     </Nav.Link>
@@ -136,8 +140,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
                   borderRadius: "5px",
                   padding: "10px",
                   // backgroundColor: "#f9f9f9",
-                }}
-              >
+                }}>
                 <div
                   style={{
                     display: "flex",
@@ -145,14 +148,12 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
                     alignItems: "center",
                     cursor: "pointer",
                   }}
-                  onClick={toggleDropdown}
-                >
+                  onClick={toggleDropdown}>
                   <h4 style={{ margin: 0, fontSize: "16px", color: "#333" }}>
                     <img
                       src={Keyicon}
                       style={{ marginRight: "10px" }}
-                      alt="home-icon svg"
-                    ></img>
+                      alt="home-icon svg"></img>
                     Secrets Scanning
                   </h4>
                   <span
@@ -161,8 +162,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
                       display: "inline-block",
                       transform: isOpen ? "rotate(90deg)" : "rotate(0)",
                       transition: "transform 0.3s ease",
-                    }}
-                  >
+                    }}>
                     &gt;
                   </span>
                 </div>
@@ -180,8 +180,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
                       // boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                       borderRadius: "5px",
                       zIndex: 10,
-                    }}
-                  >
+                    }}>
                     <li
                       style={{
                         padding: "5px 5px",
@@ -197,16 +196,14 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
                         if (onClickItem) {
                           onClickItem("default");
                         }
-                      }}
-                    >
+                      }}>
                       <a
                         href="#/action-1"
                         style={{
                           textDecoration: "none",
                           color: "inherit",
                           display: "block",
-                        }}
-                      >
+                        }}>
                         Default Pattern
                       </a>
                       <span
@@ -221,9 +218,8 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
                           color: "#fff",
                           fontSize: "12px",
                           fontWeight: "bold",
-                        }}
-                      >
-                        3
+                        }}>
+                        {config?.default_pattern_count | 0}
                       </span>
                     </li>
                     <li
@@ -241,16 +237,14 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
                         if (onClickItem) {
                           onClickItem("custom");
                         }
-                      }}
-                    >
+                      }}>
                       <a
                         href="#/action-2"
                         style={{
                           textDecoration: "none",
                           color: "inherit",
                           display: "block",
-                        }}
-                      >
+                        }}>
                         Custom Pattern
                       </a>
                       <span
@@ -265,9 +259,8 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
                           color: "#fff",
                           fontSize: "12px",
                           fontWeight: "bold",
-                        }}
-                      >
-                        3
+                        }}>
+                        {config?.custom_pattern_count | 0}
                       </span>
                     </li>
                   </ul>
@@ -282,7 +275,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
         </div>
         <div className="search-bar">
           <button type="submit">
-            <IoSearch style={{ color: "#9CA3AF"}}/>
+            <IoSearch style={{ color: "#9CA3AF" }} />
           </button>
           <input type="search" placeholder="| Type to Seach"></input>
         </div>
@@ -293,8 +286,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
             backgroundColor: "#D9D9D9",
             borderRadius: "50%",
             marginLeft: "20px",
-          }}
-        ></div>
+          }}></div>
       </div>
       <div className="nav-bottom bottom-border">
         <Navbar bg="dark" variant="dark" expand="lg">
@@ -306,15 +298,13 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
                 to={"/home"}
                 className={`d-flex align-items-center ${
                   location.pathname.includes("home") && "active"
-                }`}
-              >
+                }`}>
                 <img src={homeicon} alt="home-icon svg"></img>
                 Home
               </Nav.Link>
               <Nav.Link
                 href="#repositories"
-                className="d-flex align-items-center"
-              >
+                className="d-flex align-items-center">
                 <img src={repositoriesicon} alt="home-icon svg"></img>
                 Repositories<span>1.5k</span>
               </Nav.Link>
@@ -327,8 +317,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
                 to={"/secret-scan"}
                 className={`d-flex align-items-center ${
                   location.pathname.includes("secret-scan") && "active"
-                }`}
-              >
+                }`}>
                 <img src={organizationicon} alt="home-icon svg"></img>
                 Organization
               </Nav.Link>
@@ -342,8 +331,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
             <div className="dropdown">
               <DropdownButton
                 id="dropdown-basic-button"
-                title="Dropdown button"
-              >
+                title="Dropdown button">
                 <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                 <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
               </DropdownButton>
