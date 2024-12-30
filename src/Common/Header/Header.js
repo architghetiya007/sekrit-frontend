@@ -325,20 +325,6 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
           </Navbar.Collapse>
         </Navbar>
       </div>
-      <div className="banner">
-        <Offcanvas>
-          <Offcanvas.Body>
-            <div className="dropdown">
-              <DropdownButton
-                id="dropdown-basic-button"
-                title="Dropdown button">
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              </DropdownButton>
-            </div>
-          </Offcanvas.Body>
-        </Offcanvas>
-      </div>
     </>
   );
 };
