@@ -13,7 +13,11 @@ const Secretscan = () => {
       <div className="main">
         <div className="home-container">
           <Header secretscanEdit={true} />
-          <div className="banner">
+          
+        </div>
+      </div>
+      <div className="main-banner">
+      <div className="banner">
             <div className="banner-title">
               <h3>Secret Scanning Rules</h3>
             </div>
@@ -202,7 +206,6 @@ const Secretscan = () => {
               </div>
             </div>
           </div>
-        </div>
       </div>
     </>
   );

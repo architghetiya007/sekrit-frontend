@@ -46,10 +46,14 @@ const Home = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <>
+    <div className="main-body">
       <div className="main">
         <div className="home-container">
           <Header />
+          
+        </div>
+      </div>
+      <div className="main-banner">
           <div className="banner">
             <div className="main-title">
               <p>Overview</p>
@@ -168,9 +172,8 @@ const Home = () => {
               </Table>
             </div>
           </div>
-        </div>
-      </div>
-    </>
+          </div>
+    </div>
   );
 };
 

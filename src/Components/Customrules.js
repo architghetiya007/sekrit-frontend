@@ -35,11 +35,16 @@ const Customrules = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <>
+    <div className="main-body">
       <div className="main">
         <div className="home-container">
           <Header selectedMenu={selectedMenu} onClickItem={onClickItem} />
-          <div className="banner">
+         
+        </div>
+       
+      </div>
+      <div className="main-banner">
+        <div className="banner">
             <div className="banner-top-details">
               <div className="banner-title">Secret scanning alerts</div>
               <button type="button">Goto Rules</button>
@@ -152,8 +157,7 @@ const Customrules = () => {
             </div>
           </div>
         </div>
-      </div>
-    </>
+    </div>
   );
 };
 

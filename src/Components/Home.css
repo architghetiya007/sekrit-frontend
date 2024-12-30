@@ -14,7 +14,7 @@ h1,h2,h3,h4,p{
     padding: 0;
 }
 body{
-    overflow: scroll !important;
+    /* overflow: scroll !important; */
 }
 .main{
     padding: 24px 0 24px 0;

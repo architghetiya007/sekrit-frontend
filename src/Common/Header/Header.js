@@ -38,7 +38,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
           />
         </Button>
         {secretscanEdit ? (
-          <Offcanvas show={show} >
+          <Offcanvas style={{top: "16.2%", position: "fixed"}} show={show}>
             <Offcanvas.Header>
               <Offcanvas.Title className="title">Settings</Offcanvas.Title>
             </Offcanvas.Header>
@@ -84,7 +84,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
             </Offcanvas.Body>
           </Offcanvas>
         ) : (
-          <Offcanvas show={show}>
+          <Offcanvas style={{top: "16.2%", position: "fixed"}} show={show}>
             <Offcanvas.Header>
               <Offcanvas.Title>Security</Offcanvas.Title>
             </Offcanvas.Header>

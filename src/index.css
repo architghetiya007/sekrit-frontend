@@ -6,6 +6,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-right: 0 !important;
+  overflow: hidden !important;
+}
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+html {
+  overflow: hidden;
 }
 
 code {
@@ -15,13 +24,33 @@ code {
 
 .main {
   background-color: #F6F8FA;
+  position: fixed;
+  width: 100%;
+  height: 90px !important;
+  padding: 10px !important;
+  z-index: 9 !important;
 }
 
 .offcanvas.offcanvas-start.show {
   background-color: #F6F8FA;
   border-right: 1px solid var(--lightgrey);
   min-height: calc(100vh - 150px);
+  z-index: 99 !important;
 }
 .banner {
-  padding-top: 36px !important;
+  width: 100%;
+  /* overflow-y: scroll; */
+  max-width: 100% !important;
+  position: unset !important;
+  padding: 5% !important;
+  padding-top: 116px !important;
+  margin-right: 5%;
+}
+
+.main-banner {
+  height: 100vh;
+  overflow-x: hidden;
+  /* min-height: 500px; */
+  overflow-y: auto;
+  margin-left: 15% !important;
 }

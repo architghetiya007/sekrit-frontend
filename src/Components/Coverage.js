@@ -32,6 +32,10 @@ const Coverage = () => {
       <div className="main">
         <div className="home-container">
           <Header />
+         
+        </div>
+      </div>
+      <div className="main-banner">
           <div className="banner ">
             <div className="main-title">
               <h4>Security Coverage</h4>
@@ -90,8 +94,7 @@ const Coverage = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+          </div>
     </>
   );
 };
