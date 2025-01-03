@@ -286,6 +286,7 @@ const Header = ({ selectedMenu, onClickItem, secretscanEdit = false }) => {
             backgroundColor: "#D9D9D9",
             borderRadius: "50%",
             marginLeft: "20px",
+            marginRight: '20px'
           }}></div>
       </div>
       <div className="nav-bottom bottom-border">
