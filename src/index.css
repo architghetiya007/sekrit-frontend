@@ -31,7 +31,7 @@ code {
   z-index: 9 !important;
 }
 
-.offcanvas.offcanvas-start.show {
+.offcanvas.offcanvas-top.show {
   background-color: #F6F8FA;
   border-right: 1px solid var(--lightgrey);
   min-height: calc(100vh - 150px);
